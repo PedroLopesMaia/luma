@@ -3,24 +3,20 @@ Library    SeleniumLibrary
 Resource   ../page_objects/register_page_object.resource
 
 *** Keywords ***
-I go to sign in page
-    Click Link                 ${CREATE_ACCOUNT}
+I fill ${name} in name text field
+    Input text                 ${NAME_TEXT_FIELD}         ${name}
 
-I fill register form
-    Input text                 ${NAME_TEXT_FIELD}         User
-    Input text                 ${LASTNAME_TEXT_FIELD}     Test
-    Input text                 ${EMAIL_TEXT_FIELD}        usertestsadasdas-009@email.com
-    Input password             ${PASSWORD_FIELD}          14725228Bananas@112-009
-    Input password             ${CONFIRM_PASSWORD_FIELD}  14725228Bananas@112-009
+I fill ${lastname} in lastname test field
+    Input text                 ${LASTNAME_TEXT_FIELD}     ${lastname}
+
+I fill ${email} in e-mail text field
+    Input text                 ${EMAIL_TEXT_FIELD}        ${email}
+
+I fill ${password} in password field
+    Input password             ${PASSWORD_FIELD}          ${password}
+
+I fill ${confirm_password} in confirm password field
+    Input password             ${CONFIRM_PASSWORD_FIELD}  ${confirm_password}
 
 I submit register form
     Click button               ${SUBMIT_BUTTON}
-
-I should see a success message
-    Wait until page contains   ${SUCCESS_MESSAGE}
-
-I should see My Wish List
-    Page should contain Link   ${MY_ORDERS_LINK}
-
-I should see My Orders
-    Page should contain Link   ${MY_WISHLIST_LINK}
